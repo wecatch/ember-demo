@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import model from 'ember-easy-orm/initializers/model'
+import model from 'ember-easy-orm/mixins/model'
 
 export default Ember.Object.extend(model, {
     url: '/v1/auto/brand/list',
