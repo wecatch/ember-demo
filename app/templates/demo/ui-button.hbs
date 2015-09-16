@@ -1,0 +1,146 @@
+{{outlet}}
+
+<div class="ui container" >
+    <div class="ui dividing header" >ui button</div>
+    <div class="ui two column grid" >
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-button theme="basic" }} button \{{/ui-button}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-button theme="basic" loading=true }}button{{/ui-button}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-button theme="primary" }} button \{{/ui-button}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-button theme="primary" disabled=true }}button{{/ui-button}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-button theme="secondary" }} button \{{/ui-button}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-button theme="secondary" }}button{{/ui-button}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-button theme="animated" tagName="div" }}\{{/ui-button}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-button theme="animated" tagName="div" }}
+                    <div class="visible content">Next</div>
+                    <div class="hidden content">
+                        <i class="right arrow icon"></i>
+                    </div>
+                {{/ui-button}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-button theme="red" }}\{{/ui-button}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-button theme="red" }}button{{/ui-button}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-button theme="orange" }}\{{/ui-button}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-button theme="orange" }}button{{/ui-button}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-button theme="yellow" }}\{{/ui-button}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-button theme="yellow" }}button{{/ui-button}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-button theme="blue" }}\{{/ui-button}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-button theme="blue" }}button{{/ui-button}}
+            </div>
+        </div>
+    </div>
+    <div class="ui dividing header" >ui label button</div>
+    <div class="ui one column grid" >
+        <div class="row" >
+            <div class="column" >
+                <div class="ui labeled button" >
+                    {{#ui-button theme="primary" }}
+                        <i class="heart icon" ></i>
+                    {{/ui-button}}
+                    <div class="ui basic label" >
+                        2,148
+                    </div>
+                </div>
+
+                <div class="ui labeled button" >
+                    {{#ui-button theme="red" }}
+                        <i class="heart icon" ></i>
+                    {{/ui-button}}
+                    <div class="ui basic red left pointing label" >
+                        2,148
+                    </div>
+                </div>
+                
+                <div class="ui labeled button" >
+                    {{#ui-button theme="basic blue" }}
+                        <i class="heart icon" ></i>
+                    {{/ui-button}}
+                    <div class="ui basic blue left pointing label" >
+                        2,148
+                    </div>
+                </div>
+                
+                <div class="ui left labeled button" >
+                    <div class="ui basic blue right pointing label" >
+                        2,148
+                    </div>
+                    {{#ui-button theme="primary" }}
+                        <i class="heart icon" ></i>
+                    {{/ui-button}}
+                </div>
+
+                <div class="ui labeled button" >
+                    {{#ui-button theme="primary" }}
+                        <i class="heart icon" ></i>
+                    {{/ui-button}}
+                    <div class="ui basic label" >
+                        2,148
+                    </div>
+                </div>
+                {{#ui-button theme="compact" }}
+                    <i class="heart icon" ></i>
+                {{/ui-button}}
+            </div>
+        </div>
+    </div>
+</div>

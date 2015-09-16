@@ -1,0 +1,21 @@
+{{outlet}}
+
+<div class="ui grid" >
+    <div class="column" >
+		<div class="items">
+			<div class="item">
+				<div class="header" >
+					同步数据源
+				</div>
+				<div class="content" >
+					{{#ui-multi-select label="品牌选择" options=options value=value}}
+						<label>品牌选择</label>
+					{{/ui-multi-select}}
+					<div class="meta" >
+						{{value}}
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>

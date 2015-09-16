@@ -1,0 +1,53 @@
+{{outlet}}
+
+<div class="ui grid" >
+    <div class="column" >
+        <div class="ui items" >
+            <div class="ui dividing header" >example 1</div>
+            <div class="item" >
+                <div class="content" >
+                    <div class="ui form" >
+                        {{#ui-radio-group theme="grouped" value=checkvalue name="co1" }}
+                            <label>choose company</label>
+                        <div class="field" >
+                            {{#ui-radio  value="apple" }}apple{{/ui-radio}}
+                        </div>
+                        <div class="field" >
+                            {{#ui-radio  value="google" }}google{{/ui-radio}}
+                        </div>
+                        <div class="field" >
+                            {{#ui-radio  value="dropbox" }}dropbox{{/ui-radio}}
+                        </div>
+                        {{/ui-radio-group}}
+                    </div>
+                    <div class="meta" >
+                        {{checkvalue}}
+                    </div>
+                </div>
+            </div>
+            <div class="ui dividing header" >example 2</div>
+            <div class="item" >
+                <div class="content" >
+                    <div class="ui form" >
+                        {{#ui-radio-group theme="grouped" label="choose company" name="co2" options=options value=checkvalue2 }}{{/ui-radio-group}}
+                    </div>
+                    <div class="meta" >
+                        {{checkvalue2}}
+                    </div>
+                </div>
+            </div>
+            <div class="ui dividing header" >example 3</div>
+            <div class="item" >
+                <div class="content" >
+                    <div class="ui form" >
+                        {{#ui-radio-group name="co3" label="choose company" theme="inline fields" options=options value=checkvalue3 }}
+                        {{/ui-radio-group}}
+                    </div>
+                    <div class="meta" >
+                        {{checkvalue3}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

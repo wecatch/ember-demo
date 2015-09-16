@@ -1,0 +1,41 @@
+{{outlet}}
+
+<div class="ui container">
+	<div>
+		{{#ui-alert type="success" header="这是一条成功消息"}}{{/ui-alert}}
+	</div>
+	<br/>
+	<div>
+		{{#ui-alert type="error" header="这是一条错误消息"}}{{/ui-alert}}
+	</div>
+	<br/>
+	<div>
+		{{#ui-alert type="warning" header="这是一条警告消息"}}{{/ui-alert}}
+	</div>
+	<br/>
+	<div>
+		{{#ui-alert header="这是一条消息"}}{{/ui-alert}}
+	</div>
+	<br/>
+	<div>
+		{{#ui-alert header="这是超大号消息" size="massive"}}{{/ui-alert}}
+	</div>
+	<br/>
+	<div>
+		{{#ui-alert allowClose=true header="这是一条可清除的消息"}}{{/ui-alert}}
+	</div>
+	<br/>
+	<div>
+		{{#ui-alert header="这是一条带内容的消息"}}
+			<ul>
+				<li>
+					<p>第一点</p>
+				</li>
+				<li>
+					<p>第二点</p>
+				</li>
+			</ul>
+		{{/ui-alert}}
+	</div>
+	<br/>
+</div>

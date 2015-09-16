@@ -1,0 +1,72 @@
+{{outlet}}
+
+
+<div class="ui container" >
+    <div class="ui dividing header" >ui checkbox</div>
+    <div class="ui two column grid" >
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-checkbox}}normal\{{/ui-checkbox}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-checkbox }}normal{{/ui-checkbox}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-checkbox checked=true }}normal\{{/ui-checkbox}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-checkbox  checked=true }}normal{{/ui-checkbox}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-checkbox theme="toggle"}}toggle\{{/ui-checkbox}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-checkbox theme="toggle"}}toggle{{/ui-checkbox}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-checkbox checked=true theme="toggle"}}toggle\{{/ui-checkbox}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-checkbox checked=true theme="toggle"}}toggle{{/ui-checkbox}}
+            </div>
+        </div>
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-checkbox theme="slider" }}slider\{{/ui-checkbox}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-checkbox theme="slider" }}slider{{/ui-checkbox}}
+            </div>
+        </div>
+    </div>
+    <div class="ui dividing header" >useage</div>
+    <div class="ui two column grid" >
+        <div class="row" >
+            <div class="column" >
+                <div class="ui compact segment" >
+                    \{{#ui-checkbox checked=true  theme="slider" }}slider\{{/ui-checkbox}}
+                </div>
+            </div>
+            <div class="column" >
+                {{#ui-checkbox checked=isChecked  value="apple"  theme="slider" }}slider{{/ui-checkbox}}
+                <div class="ui left pointing  label" >{{isChecked}}</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+{{outlet}}
+
+<h4 class="ui header">focus</h4>
+<div class="html ui top attached segment">
+	{{#ui-input focus=true}}{{/ui-input}}
+</div>
+<div class="ui instructive bottom attached segment">
+	<code class="code xml">
+		\{{#ui-input focus=true}}\{{/ui-input}}
+	</code>
+</div>
+
+<h4 class="ui header">loading</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="icon" loading=true}}<i class="search icon"></i>{{/ui-input}}
+</div>
+<div class="ui instructive bottom attached segment">
+	<code class="code xml">
+		\{{#ui-input theme="icon" loading=true}}<i class="search icon"></i>\{{/ui-input}}
+	</code>
+</div>
+
+<h4 class="ui header">error</h4>
+<div class="html ui top attached segment">
+	{{#ui-input error=true}}{{/ui-input}}
+</div>
+<div class="ui instructive bottom attached segment">
+	<code class="code xml">
+		\{{#ui-input error=true}}\{{/ui-input}}
+	</code>
+</div>
+
+
+<h4 class="ui header">disabled</h4>
+<div class="html ui top attached segment">
+	{{#ui-input disabled=true value="search" }}{{/ui-input}}
+</div>
+<div class="ui instructive bottom attached segment">
+	<code class="code xml">
+		\{{#ui-input disabled=true}}\{{/ui-input}}
+	</code>
+</div>
+
+<h4 class="ui header">readonly</h4>
+<div class="html ui top attached segment">
+	{{#ui-input readonly=true value="search" }}{{/ui-input}}
+</div>
+<div class="ui instructive bottom attached segment">
+	<code class="code xml">
+		\{{#ui-input readonly=true}}\{{/ui-input}}
+	</code>
+</div>
+
+<h4 class="ui header">fluid</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="fluid icon" value="search" }}
+			<i class="search icon"></i>
+	{{/ui-input}}
+</div>
+
+<h4 class="ui header">action</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="fluid action" value="search" }}
+		{{#ui-button}}search{{/ui-button}}
+	{{/ui-input}}
+</div>
+
+
+<h4 class="ui header">mini</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="mini icon" value="search" }}
+		<i class="search icon"></i>
+	{{/ui-input}}
+</div>
+
+<h4 class="ui header">small</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="small icon" value="search" }}
+		<i class="search icon"></i>
+	{{/ui-input}}
+</div>
+
+<h4 class="ui header">big</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="big icon" value="search" }}
+		<i class="search icon"></i>
+	{{/ui-input}}
+</div>
+
+<h4 class="ui header">huge</h4>
+<div class="html ui top attached segment">
+	{{#ui-input theme="huge icon" value="search" }}
+		<i class="search icon"></i>
+	{{/ui-input}}
+</div>
+
+<h4 class="ui header">form</h4>
+<div class="html ui top attached segment">
+	<div class="ui form">
+		<div class="field" >
+			<label>date</label>
+			{{#ui-input type="date"}}{{/ui-input}}
+		</div>
+		<div class="field">
+			<label>普通输入框</label>
+			{{#ui-input}}{{/ui-input}}
+		</div>
+		<div class="two fields" >
+			<div class="field" >
+				<label>普通输入框</label>
+				{{#ui-input}}{{/ui-input}}
+			</div>
+			<div class="field" >
+				<label>普通输入框</label>
+				{{#ui-input}}{{/ui-input}}
+			</div>
+		</div>
+		{{#ui-form-input }}
+			普通form输入框
+		{{/ui-form-input}}
+		{{#ui-form-input error=true }}
+			普通form error输入框
+		{{/ui-form-input}}
+		{{#ui-form-input disabled=true }}
+			普通form disabled 输入框
+		{{/ui-form-input}}
+		{{#ui-form-input readonly=true value="only read value" }}
+			普通form readonly 输入框
+		{{/ui-form-input}}
+		{{#ui-form-input theme="inline" }}
+			普通form内联输入框
+		{{/ui-form-input}}
+	</div>
+</div>
+

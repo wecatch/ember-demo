@@ -1,0 +1,59 @@
+{{outlet}}
+
+
+<div class="ui grid" >
+    <div class="column" >
+        <div class="ui items" >
+            <div class="item" >
+                <div class="content" >
+                    <div class="header" >姓名:{{model.name}}</div>
+                    <div class="header" >昵称:{{model.nickname}}</div>
+                    <div class="description" >
+                        <span>来自于</span>
+                        <span>{{province-name model.province }}</span>
+                        <span>{{city-name model.city}}</span>
+                        <span>{{area-name model.area}}</span>,
+                    </div>
+                    <div class="meta" >
+                        <span>{{model.nickname}}</span>
+                        <span>{{province-name model.province }}</span>
+                        <span>{{city-name model.city}}</span>
+                        <span>{{area-name model.area}}</span>
+                        {{!-- <span>{{isAgree}}</span> --}}
+                        <p>
+                            {{model.category}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui header" >基本信息</div>
+<div class="ui divider" ></div>
+
+<div class="ui form" >
+    <div class="two fields" >
+        {{#ui-form-input value=model.name label="姓名" }}{{/ui-form-input}}
+        {{#ui-form-input value=model.nickname label="昵称" }}{{/ui-form-input}}
+        {{#ui-select label="性别" options=genderOptions value=model.gender }}{{/ui-select}}
+    </div>
+    {{#ui-checkbox-group theme="grouped" label="喜欢的分类" value=model.category options=category labelPath="name" valuePath="id" }}{{/ui-checkbox-group}}
+    <div class="inline fields" >
+        <label>地址</label>
+        {{#ui-select placeHolder="省" options=provinceOptions value=model.province valuePath="id" namePath="name" }}{{/ui-select}}
+        {{#ui-select placeHolder="市" options=cityOptions value=model.city valuePath="id" namePath="name" }}{{/ui-select}}
+        {{#ui-select placeHolder="县" options=areaOptions value=model.area valuePath="id" namePath="name" }}{{/ui-select}}
+    </div>
+    <div class="field" >
+        {{#ui-checkbox checked=isAgree }}
+            同意注册服务条款
+        {{/ui-checkbox}}
+    </div>
+    <div class="field" >
+        {{#ui-button theme="primary" }}登录{{/ui-button}}
+    </div>
+</div>
+
+    
