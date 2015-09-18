@@ -21,7 +21,7 @@ module.exports = function(environment) {
       'default-src': "'none'",
       'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
       'font-src': "'self' data: localhost",
-      'connect-src': "'self'",
+      'connect-src': "'self' http://localhost:8888 ",
       'img-src': "*",
       'style-src': "'self' 'unsafe-inline' localhost",
       'frame-src': "'self'"

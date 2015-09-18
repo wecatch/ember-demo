@@ -1,1 +1,37 @@
-<input type="file" name="files" multiple>
+<div class="ui fluid labeled input" >
+    <label class="ui fluid huge label" style="{{labelStyle}}" >
+        <i class="big cloud upload icon"></i>
+        upload files
+    </label>
+    <input type="file" name="files[]" style="{{inputStyle}}" multiple>
+</div>
+<div class="ui items" >
+    {{#each queue as |q| }}
+        <div class="item" >
+            <div class="image" >
+                <img src="http://img3.douban.com/view/photo/albumcover/public/p1985008901.jpg">
+            </div>
+            <div class="content" >
+                <div class="header" >
+                    {{q.name}} {{progress}}
+                </div>
+                <div class="meta" >
+                    {{format-byte q.size}}
+                </div>
+                <div class="description" >
+                    {{#ui-progress percent=process }}{{/ui-progress}}
+                </div>
+                <div class="extra" >
+                    <div class="ui green button">
+                        <i class="upload icon" ></i>
+                        upload
+                    </div>
+                    <div class="ui button">
+                        <i class="cancel icon"></i>
+                        cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
