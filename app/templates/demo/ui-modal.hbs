@@ -6,19 +6,17 @@
 			<div class="item">
 				<h3>默认弹出层</h3>
 				<a href="javascript:;" {{action 'clickHandler'}}>点击</a>
-				{{#ui-modal display=display}}
-					{{#ui-modal-title title="modal 1"}}{{/ui-modal-title}}
+				{{#ui-modal show=display}}
+					{{#ui-modal-title }}modal 1{{/ui-modal-title}}
 					{{#ui-modal-content theme="image"}}
-						<h3>hello modal</h3>
-						<img src="http://img0.androidesk.com/download/55a3622069401b3ce78c8317">
-						<ul>
-							<li>
+						<div class="ui small image" >
+							<img src="http://img0.androidesk.com/download/55a3622069401b3ce78c8317">
+						</div>
+						<div class="description" >
+							<div class="ui header" >
 								<p>first role</p>
-							</li>
-							<li>
-								<p>second ...</p>
-							</li>
-						</ul>
+							</div>
+						</div>
 					{{/ui-modal-content}}
 					{{#ui-modal-foot}}
 						<div class="ui black deny button">
@@ -34,8 +32,8 @@
 			<div class="item">
 				<h3>不同效果(transition：fade up, fade down, fade left, fade right, flip, drop, fly left, tada ...)</h3>
 				<a href="javascript:;" {{action 'clickHandler1'}}>点击</a>
-				{{#ui-modal display=display1 transition="fade down"}}
-					{{#ui-modal-title title="modal 2"}}{{/ui-modal-title}}
+				{{#ui-modal show=display1 transition="fade down"}}
+					{{#ui-modal-title }}modal 2{{/ui-modal-title}}
 					{{#ui-modal-content}}
 						<h3>hello modal</h3>
 						<ul>
