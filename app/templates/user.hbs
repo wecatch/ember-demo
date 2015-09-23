@@ -1,0 +1,21 @@
+<div class="ui items" >
+    {{#each model as |u|}}
+        <div class="item" >
+            <div class="header" >{{u.name}}</div>
+        </div>
+    {{/each}}
+</div>
+{{#ui-form loading=loading }}
+    <div class="ui buttons" >
+        <div class="ui button" {{action "edit"}} >
+            edit
+        </div>
+        <div class="ui button" {{action "save"}} >
+            save
+        </div>
+    </div>
+{{/ui-form}}
+{{#ui-modal show=formModalShow }}
+    {{#ui-modal-title}}adfasdf{{/ui-modal-title}}
+{{/ui-modal}}
+{{outlet}}

@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import model from 'ember-easy-orm/mixins/model'
+import model from '../mixins/model'
 
 export default Ember.Object.extend(model, {
-    url: '/v1/auto/brand/list',
+    url: '/v1/user',
     model: {
         'gender': '1',
         'nickname':'',
@@ -12,5 +12,5 @@ export default Ember.Object.extend(model, {
         'area':'',
         'category':[]
     },
-    rootKey: 'brand'
+    rootKey: 'user'
 });
