@@ -72,6 +72,7 @@ export default Ember.Controller.extend({
     provinceOptions: province,
     cityOptions: [],
     areaOptions: [],
+    tags: ['a', 'b', 'c', 'd'],
     isAgree: false,
     category: category,
     genderOptions: gender,
