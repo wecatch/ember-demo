@@ -5,17 +5,29 @@
         </div>
     {{/each}}
 </div>
-{{#ui-form loading=loading }}
-    <div class="ui buttons" >
-        <div class="ui button" {{action "edit"}} >
-            edit
-        </div>
-        <div class="ui button" {{action "save"}} >
-            save
-        </div>
+
+<div class="ui buttons" >
+    <div class="ui button" {{action "edit"}} >
+        edit
     </div>
-{{/ui-form}}
+</div>
+
 {{#ui-modal show=formModalShow }}
     {{#ui-modal-title}}adfasdf{{/ui-modal-title}}
+    {{#ui-modal-content}}
+        {{#ui-form loading=loading }}
+            <div class="ui buttons" >
+                <div class="ui button" {{action "save"}} >
+                    save
+                </div>
+                <div class="ui button" {{action "cancel"}} >
+                    cancel
+                </div>
+                <div class="ui button" {{action "delete"}} >
+                    delete
+                </div>
+            </div>
+        {{/ui-form}}
+    {{/ui-modal-content}}
 {{/ui-modal}}
 {{outlet}}
