@@ -18,7 +18,7 @@ export default Ember.Component.extend({
     * @property {Ember.String} theme
     * @default  ''
     */
-    theme: '',
+    theme: 'green',
 
     /**
     * progress percent
@@ -36,6 +36,6 @@ export default Ember.Component.extend({
      */
     attributeBindings: ['percent:data-percent'],
     initialize: function (argument) {
-        this.$().progress();
+        
     }.on('didInsertElement')
 });

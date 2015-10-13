@@ -22,6 +22,7 @@ Router.map(function() {
       this.route('ui-label');
       this.route('ui-modal');
       this.route('ui-form');
+      this.route('ui-progress');
       this.route('ui-labeled-input');
       this.route('form');
   });

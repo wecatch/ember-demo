@@ -70,6 +70,7 @@ let gender = [{
 
 export default Ember.Controller.extend({
     provinceOptions: province,
+    fileObject:null,
     cityOptions: [],
     areaOptions: [],
     tags: ['a', 'b', 'c', 'd'],

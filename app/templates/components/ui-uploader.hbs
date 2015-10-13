@@ -3,33 +3,43 @@
         <i class="big cloud upload icon"></i>
         upload files
     </label>
-    <input type="file" name="files[]" style="{{inputStyle}}" multiple>
+    {{ui-file-input style=inputStyle fileObject=fileObject}}
 </div>
-<div class="ui items" >
+<div class="ui divided items" >
     {{#each queue as |q| }}
         <div class="item" >
-            <div class="image" >
-                <img src="http://img3.douban.com/view/photo/albumcover/public/p1985008901.jpg">
-            </div>
+            {{#if q.isDisplayableImage}}
+                <div class="image" >
+                    <img src="{{q.base64Image}}">
+                </div>
+            {{/if}}
             <div class="content" >
                 <div class="header" >
                     {{q.name}} {{progress}}
                 </div>
                 <div class="meta" >
-                    {{format-byte q.size}}
+                    {{q.size}}
                 </div>
                 <div class="description" >
-                    {{#ui-progress percent=process }}{{/ui-progress}}
+                    {{#ui-progress theme="green" percent=q.uploadProgress }}{{/ui-progress}}
                 </div>
                 <div class="extra" >
-                    <div class="ui green button">
-                        <i class="upload icon" ></i>
-                        upload
-                    </div>
-                    <div class="ui button">
-                        <i class="cancel icon"></i>
-                        cancel
-                    </div>
+                    {{#unless q.didUpload }}
+                        <div class="ui green button" {{action "startUpload" q }} >
+                            <i class="upload icon" ></i>
+                            upload
+                        </div>
+                        <div class="ui button" {{action "cancelUpload" q }} >
+                            <i class="cancel icon"></i>
+                            cancel
+                        </div>
+                    {{/unless}}
+                    {{#if q.didUpload}}
+                        <div class="ui red button" {{action "deleteFile" q }} >
+                            <i class="delete icon" ></i>
+                            delete
+                        </div>
+                    {{/if}}
                 </div>
             </div>
         </div>

@@ -1,7 +1,46 @@
 import Ember from 'ember';
+import uploader from '../uploader/uploader';
 
 export default Ember.Component.extend({
-    
+    actions: {
+        startUpload: function(obj) {
+            let url = this.get('url'),
+                self = this;
+            obj.uploader = uploader.create({
+                url: url
+            });
+
+            obj.uploadPromise = obj.uploader.upload(obj.fileToUpload);
+
+            this.sendAction('uploadStart', obj);
+
+            obj.uploader.on('progress', function(e) {
+                obj.set('uploadProgress', e.percent);
+            });
+            obj.uploader.on('didUpload', function(data){
+                obj.set('didUpload', true);
+                obj.set('data', data);
+                //send parent to process uploaded callback
+                self.sendAction('uploadSucess', obj.data);
+            });
+        },
+        cancelUpload: function(obj) {
+            this.sendAction('uploadCancel', obj);
+            obj.uploader.abort();
+        },
+        deleteFile: function(obj){
+            this.get('queue').removeObject(obj);
+            this.sendAction('deleteFile', obj);
+        }
+    },
+    /**
+     * The upload url
+     *
+     * @property {Ember.String} url
+     * @default  ""
+     */
+    url: '',
+
     /**
      * The root component element
      *
@@ -19,129 +58,56 @@ export default Ember.Component.extend({
     classNames: ['ui', 'segment'],
 
     /**
-     * A string containing the URL to which the request is sent
+     * To  allow  file autoUpload
      *
-     * @property {Ember.String} url
-     * @default  ""
+     * @property {Ember.Boolean} forceIframeTransport
+     * @default  false
      */
-    url: '',
-
-    /**
-     * file input name 
-     *
-     * @property {Ember.String} name
-     * @default  ""
-     */
-    name: 'file',
-
-    /**
-     * The HTTP request method for the file uploads. Can be "POST", "PUT" or "PATCH" and defaults to "POST".
-     *
-     * @property {Ember.String} type
-     * @default  "POST"
-     */
-    type: 'POST',
-
-    /**
-     * The type of data that is expected back from the server
-     *
-     * @property {Ember.String} datetype
-     * @default  "POST"
-     */
-    dataType: 'jsonp',
-
-    /**
-     * The HTTP request method for the file uploads. Can be "POST", "PUT" or "PATCH" and defaults to "POST".
-     *
-     * @property {Ember.String} type
-     * @default  "POST"
-     */
-    dropZone: null,
-
-    /**
-    * To force all browser to make use of the iframe transport module for file uploads
-    *
-    * @property {Ember.Boolean} forceIframeTransport
-    * @default  false
-    */
-    forceIframeTransport: true,
-
-    /**
-    * To  allow  file autoUpload
-    *
-    * @property {Ember.Boolean} forceIframeTransport
-    * @default  false
-    */
     autoUpload: true,
 
     /**
-    * upload queue
-    *
-    * @property {Ember.Array} queue
-    * @default  false
-    */
+     * upload file queue
+     *
+     * @property {Ember.Array} queue
+     * @default  []
+     */
     queue: [],
 
     /**
-    * upload progress percent
-    *
-    * @property {Ember.Number} percent
-    * @default 0
-    */
-    progress: 0,
-
+     * upload file 
+     *
+     * @property {Ember.Object} fileObject
+     * @default  null
+     */
+    fileObject: null,
     /**
      * @function initialize
      * @observes "didInsertElement" event
      * @returns  {void}
-    */
+     */
     initialize: function(argument) {
-        let url = this.get('url'),
-            type = this.get('type'),
-            forceIframeTransport = this.get('forceIframeTransport'),
-            datetype = this.get('datetype'),
-            autoUpload = this.get('autoUpload'),
-            $this = this.$();
 
-        let id = (new Date()).getTime();
-        let that = this;
-
-        this.$('input').attr('name', this.get('name'));
-        this.$('input').attr('id', id);
-        this.$('label').attr('for', id);
-
-        this.$('input').fileupload({
-            url: 'http://localhost:8888/upload',
-            datetype: datetype,
-            type: type,
-            autoUpload: autoUpload,
-            previewMaxWidth: 100,
-            previewMaxHeight: 100,
-            forceIframeTransport: forceIframeTransport
-        }).on('fileuploadadd', function(e, data){
-            data.files.forEach(function(item){
-                that.queue.addObject(item);
-            });
-        }).on('fileuploadprogress', function(e, data){
-            if (e.isDefaultPrevented()) {
-                    return false;
-            }
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-            that.set('progress', progress);
-        });
-        //$('#example1').progress();
     }.on('didInsertElement'),
 
+    filesDidChange: function() {
+        let fileObject = this.get('fileObject')
+        if (!Ember.isEmpty(fileObject)) {
+            this.queue.pushObject(fileObject);
+        }
+    }.observes('fileObject'),
     /**
      * @function inputStyle
      * 
      * @returns  {string}
-    */
-    inputStyle: function(){
+     */
+    inputStyle: function() {
         let style_array = [
             'opacity: 0',
-            'display:none',
+            'width:100% !important',
             'overflow:hidden',
+            'position:relative',
+            'left:-100%',
+            'display:block',
         ]
         return style_array.join(';');
     }.property(),
@@ -150,8 +116,8 @@ export default Ember.Component.extend({
      * @function labelStyle
      * 
      * @returns  {string}
-    */
-    labelStyle: function(){
+     */
+    labelStyle: function() {
         let style_array = [
             'height: 6.25em',
             'line-height: 5.25em',
