@@ -8,24 +8,33 @@ export default Ember.Component.extend({
      * @property {Ember.Array} classNames
      * @default  ""
      */
-    classNameBindings: ['_uiClass', 'theme' , '_componentClass'],
+    classNameBindings: ['_uiClass', 'theme', 'loading:active:', 'success:success:', '_componentClass'],
     _uiClass: 'ui',
-    _componentClass:'progress',
-    
-    /**
-    * progress theme
-    *
-    * @property {Ember.String} theme
-    * @default  ''
-    */
-    theme: 'green',
+    _componentClass: 'progress',
 
     /**
-    * progress percent
-    *
-    * @property {Ember.Number} percent
-    * @default  0
-    */
+     * progress theme
+     *
+     * @property {Ember.String} theme
+     * @default  ''
+     */
+    theme: '',
+
+    /**
+     * progress status
+     *
+     * @property {Ember.Boolean} status
+     * @default  false
+     */
+    loading: false,
+    success: false,
+
+    /**
+     * progress percent
+     *
+     * @property {Ember.Number} percent
+     * @default  0
+     */
     percent: 0,
 
     /**
@@ -35,7 +44,7 @@ export default Ember.Component.extend({
      * @default  ""
      */
     attributeBindings: ['percent:data-percent'],
-    initialize: function (argument) {
-        
+    initialize: function(argument) {
+        this.$().progress();
     }.on('didInsertElement')
 });

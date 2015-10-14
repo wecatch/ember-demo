@@ -34,9 +34,6 @@
 <div class="ui divider" ></div>
 
 <div class="ui form" >
-    <div class="field" >
-        {{#ui-uploader url="http://localhost:8888/upload" }}{{/ui-uploader}}
-    </div>
     <div class="two fields" >
         {{#ui-form-input value=model.name label="姓名" }}{{/ui-form-input}}
         {{#ui-form-input value=model.nickname label="昵称" }}{{/ui-form-input}}
@@ -56,13 +53,6 @@
     </div>
     <div class="field" >
         {{#ui-button theme="primary" }}登录{{/ui-button}}
-    </div>
-
-    <div class="field" >
-        {{ui-file-input url="http://localhost:8888/upload" fileObject=fileObject }}
-        {{#if fileObject}}
-            <img src="{{fileObject.base64Image}}">
-        {{/if}}
     </div>
 </div>
 

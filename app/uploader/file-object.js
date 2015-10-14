@@ -1,24 +1,4 @@
 import Ember from 'ember';
-import uploader from '../uploader/uploader';
-
-function humanReadableFileSize(size) {
-    var label = "";
-    if (size == 0) {
-        label = "0 KB";
-    } else if (size && !isNaN(size)) {
-        var fileSizeInBytes = size;
-        var i = -1;
-        do {
-            fileSizeInBytes = fileSizeInBytes / 1024;
-            i++;
-        } while (fileSizeInBytes > 1024);
-
-        var byteUnits = [' KB', ' MB', ' GB', ' TB', ' PB', ' EB', ' ZB', ' YB'];
-        label += Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
-    }
-    return label;
-};
-
 
 let fileObject = Ember.Object.extend({
     init: function() {
@@ -54,7 +34,7 @@ let fileObject = Ember.Object.extend({
     uploader: null,
 
     // {Property} Upload progress 0-100 
-    uploadProgress: null,
+    percent: null,
 
     // {Property} If a file is currently being uploaded
     isUploading: false,
@@ -63,7 +43,7 @@ let fileObject = Ember.Object.extend({
     isDeleted: false,
 
     // {Property} If the file was uploaded successfully
-    didUpload: false,
+    isUploaded: false,
 
     // {Property} when the file was uploaded successfully, response data from server
     data: null,
@@ -93,19 +73,26 @@ let fileObject = Ember.Object.extend({
     }.on('init'),
 });
 
-export default Ember.Component.extend(Ember.Evented, {
-    tagName: 'input',
-    type: 'file',
-    attributeBindings: ['type', 'style'],
-    fileObject: null,
-    style:'',
-    change: function(e) {
-        let input = e.target;
-        this.trigger('filesDidChange', input.files);
-    },
-    filesDidChange: function(files) {
-        if (!Ember.isEmpty(files)) {
-            this.set('fileObject', fileObject.create({fileToUpload: files[0]}));
-        }
-    },
-});
+
+function humanReadableFileSize(size) {
+    var label = "";
+    if (size == 0) {
+        label = "0 KB";
+    } else if (size && !isNaN(size)) {
+        var fileSizeInBytes = size;
+        var i = -1;
+        do {
+            fileSizeInBytes = fileSizeInBytes / 1024;
+            i++;
+        } while (fileSizeInBytes > 1024);
+
+        var byteUnits = [' KB', ' MB', ' GB', ' TB', ' PB', ' EB', ' ZB', ' YB'];
+        label += Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
+    }
+    return label;
+};
+
+export {
+    fileObject,
+    humanReadableFileSize,
+}

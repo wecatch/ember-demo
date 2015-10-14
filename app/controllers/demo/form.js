@@ -1,7 +1,16 @@
 import Ember from 'ember';
-import { area } from '../../utils/area';
-import { province } from '../../utils/province';
-import { city } from '../../utils/city';
+import {
+    area
+}
+from '../../utils/area';
+import {
+    province
+}
+from '../../utils/province';
+import {
+    city
+}
+from '../../utils/city';
 
 
 let category = [{
@@ -70,7 +79,6 @@ let gender = [{
 
 export default Ember.Controller.extend({
     provinceOptions: province,
-    fileObject:null,
     cityOptions: [],
     areaOptions: [],
     tags: ['a', 'b', 'c', 'd'],

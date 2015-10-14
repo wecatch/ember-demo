@@ -1,34 +1,50 @@
 import Ember from 'ember';
-import uploader from '../uploader/uploader';
+import emberUploader from '../uploader/ember-uploader';
+import {
+    fileObject, humanReadableFileSize
+}
+from '../uploader/file-object';
 
 export default Ember.Component.extend({
     actions: {
-        startUpload: function(obj) {
+        start: function(obj) {
             let url = this.get('url'),
                 self = this;
-            obj.uploader = uploader.create({
+
+            obj.uploader = emberUploader.create({
                 url: url
             });
 
             obj.uploadPromise = obj.uploader.upload(obj.fileToUpload);
 
-            this.sendAction('uploadStart', obj);
+            self.sendAction('uploadStart', obj);
+            obj.set('isUploading', Ember.computed.alias('uploader.isUploading'));
 
             obj.uploader.on('progress', function(e) {
-                obj.set('uploadProgress', e.percent);
+                obj.set('percent', parseInt(e.percent));
+                self.sendAction('uploadProgress', e);
             });
-            obj.uploader.on('didUpload', function(data){
-                obj.set('didUpload', true);
+
+            obj.uploader.on('didUpload', function(data) {
+                obj.set('isUploaded', true);
                 obj.set('data', data);
-                //send parent to process uploaded callback
-                self.sendAction('uploadSucess', obj.data);
+
+                self.sendAction('uploadSucess', obj);
             });
         },
-        cancelUpload: function(obj) {
-            this.sendAction('uploadCancel', obj);
-            obj.uploader.abort();
+        abort: function(obj) {
+            this.sendAction('uploadAbort', obj);
+            if (obj.uploader) {
+                try{
+                    obj.uploader.abort();
+                }catch(e){
+
+                }
+            } else {
+                this.get('queue').removeObject(obj);
+            }
         },
-        deleteFile: function(obj){
+        deleteFile: function(obj) {
             this.get('queue').removeObject(obj);
             this.sendAction('deleteFile', obj);
         }
@@ -74,27 +90,28 @@ export default Ember.Component.extend({
     queue: [],
 
     /**
-     * upload file 
-     *
-     * @property {Ember.Object} fileObject
-     * @default  null
-     */
-    fileObject: null,
-    /**
      * @function initialize
      * @observes "didInsertElement" event
      * @returns  {void}
      */
     initialize: function(argument) {
-
+        let self = this;
+        this.$('input').change(function(e) {
+            let input = e.target,
+                obj = null;
+            if (!Ember.isEmpty(input.files)) {
+                obj = fileObject.create({
+                    fileToUpload: input.files[0]
+                });
+                self.queue.pushObject(obj);
+                //$(this).after($(this).clone().val(""));
+                $(this).val("");
+                if (self.autoUpload) {
+                    self.send('start', obj);
+                }
+            }
+        });
     }.on('didInsertElement'),
-
-    filesDidChange: function() {
-        let fileObject = this.get('fileObject')
-        if (!Ember.isEmpty(fileObject)) {
-            this.queue.pushObject(fileObject);
-        }
-    }.observes('fileObject'),
     /**
      * @function inputStyle
      * 

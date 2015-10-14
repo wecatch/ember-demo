@@ -25,6 +25,8 @@ Router.map(function() {
       this.route('ui-progress');
       this.route('ui-labeled-input');
       this.route('form');
+      this.route('file-input');
+      this.route('ui-uploader');
   });
   this.route('user');
 });
