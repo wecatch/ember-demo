@@ -1,0 +1,27 @@
+<button class="ui button" {{action "add"}} >add</button>
+<table class="ui table" >
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each model as |user| }}
+        <tr>
+            <td>{{user.name}}</td>
+            <td>
+                <button {{action "edit" user}} >edit</button>
+                <button {{action "delete" user}} >delete</button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{#ui-modal show=modalShow }}
+    {{#ui-modal-title}}{{/ui-modal-title}}
+    {{#ui-modal-content}}
+        {{user-item model=selectedItem save="save" cancel="cancel" modelName=modelName }}
+    {{/ui-modal-content}}
+{{/ui-modal}}
