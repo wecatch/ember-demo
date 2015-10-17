@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { godForm, formComponent } from '../../mixins/form-component';
 
 export default Ember.Route.extend({
     model() {
@@ -11,5 +12,6 @@ export default Ember.Route.extend({
             name: 'google',
             _id: 2
         }];
-    }
+    },
+    modelName: 'user',
 });

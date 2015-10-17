@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export {
     formComponent,
-    godComponent
+    godForm,
 }
 
 
@@ -16,12 +16,26 @@ let injectStore = Ember.Object.create({
 });
 
 
-let godComponent = Ember.Mixin.create(injectStore, {
-    selectedItem: null,
+let deleteObject = function (selectedItem){
+    this.toggleProperty('loading');
+    this.get('store').deleteRecord(this.get('modelName'), selectedItem).then(Ember.run.bind(this, function(data) {
+        this.toggleProperty('loading');
+        this.send('success', 'delete', data);
+    }), Ember.run.bind(this, function(reason) {
+        this.send('fail', 'delete', reason);
+    }));
+};
+
+
+// godForm mixin is used to controll many object's removing and adding and editing
+let godForm = Ember.Mixin.create(injectStore, {
     modelName: '',
+    model: null,
+    selectedItem: null,
+    modalShow: false,
     actions: {
         /**
-         * @function edit triggle when user click edit action
+         * @function add create new record according to modelName
          * @returns  void
          */
         add(selectedItem) {
@@ -41,33 +55,33 @@ let godComponent = Ember.Mixin.create(injectStore, {
         cancel(){
             this.toggleProperty('modalShow');
         },
-        delete(selectedItem){
-            this.eventBus.pub('godDelete', selectedItem);
-        }
+        remove (selectedItem){
+            deleteObject.call(this, selectedItem);
+        },
+        /**
+         * @function  success ajax request success callback
+         * @returns  void
+         */
+        success(action, data) {
+            Ember.Logger.info('subclass override this function for response data');
+            this.sendAction ? this.sendAction('success', action, data) : '';
+        },
+        /**
+         * @function  success ajax request success callback
+         * @returns  void
+         */
+        fail(action, reason) {
+            Ember.Logger.info('subclass override this function for fail request');
+            this.sendAction ? this.sendAction('fail', action, reason) : '';
+        },
     },
-    model: null
+    
 });
 
 
 let formComponent = Ember.Mixin.create(injectStore, {
     modelName: '',
     model: null,
-    registerEvents: function(){
-        this.eventBus.sub('godDelete', this, 'godDelete');
-    }.on('init'),
-    /**
-     * Remove events
-     *
-     * @function unregisterEvents
-     * @observes "willClearRender" event
-     * @returns  {void}
-     */
-    unregisterEvents: function() {
-        this.eventBus.unsub('godDelete');
-    }.on( 'willClearRender' ),
-    godDelete: function(selectedItem){
-        this.send('delete', selectedItem);
-    },
     actions: {
         /**
          * @function save triggle when user click save action
@@ -88,15 +102,8 @@ let formComponent = Ember.Mixin.create(injectStore, {
          * @function delete triggle when user click save action
          * @returns  void
          */
-        delete(model) {
-            console.log(model);
-            this.toggleProperty('loading');
-            this.get('store').deleteRecord(this.get('modelName'), model).then(Ember.run.bind(this, function(data) {
-                this.toggleProperty('loading');
-                this.send('success', 'delete', data);
-            }), Ember.run.bind(this, function(reason) {
-                this.send('fail', 'delete', reason);
-            }));
+        remove (model) {
+            deleteObject.call(this, model);
         },
 
         /**

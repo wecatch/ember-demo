@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import { godComponent } from '../mixins/form-component';
+import { godForm } from '../mixins/form-component';
 
-export default Ember.Component.extend(godComponent, {
+export default Ember.Component.extend(godForm, {
     modelName: 'user',
     actions: {
         success: function (action, data) {
