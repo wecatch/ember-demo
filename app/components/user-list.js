@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { godForm } from '../mixins/form-component';
+import { godForm } from 'ember-easy-orm/mixins/form';
 
 export default Ember.Component.extend(godForm, {
     modelName: 'user',
