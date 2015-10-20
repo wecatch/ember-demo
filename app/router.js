@@ -32,7 +32,14 @@ Router.map(function() {
   });
   this.route('user', function() {
     this.route('new');
+    this.route('paper');
   });
+
+  this.route('status', function(){
+    this.route('google');
+    this.route('facebook');
+  });
+
 });
 
 export default Router;
