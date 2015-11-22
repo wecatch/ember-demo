@@ -37,5 +37,8 @@
     "ember-easy-orm": "0.0.1",
     "ember-export-application-global": "^1.0.3",
     "ember-semantic-ui": "0.0.5"
+  },
+  "dependencies": {
+    "ember-cli": "^1.13.8"
   }
 }
