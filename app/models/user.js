@@ -2,7 +2,8 @@ import Ember from 'ember';
 import model from '../mixins/model'
 
 export default Ember.Object.extend(model, {
-    url: '/v1/user',
+    host: '',
+    url: '/v1/wallpaper/wallpaper',
     model: {
         'gender': '1',
         'nickname':'',
@@ -12,5 +13,6 @@ export default Ember.Object.extend(model, {
         'area':'',
         'category':[]
     },
-    rootKey: 'user'
+    rootKey: 'wallpaper',
+    dataRootKey: 'res',
 });

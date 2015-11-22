@@ -22,6 +22,6 @@
 {{#ui-modal show=modalShow }}
     {{#ui-modal-title}}{{/ui-modal-title}}
     {{#ui-modal-content}}
-        {{user-item model=selectedItem save="save" cancel="cancel" }}
+        {{user-item model=selectedItem cancel=(action "cancel") }}
     {{/ui-modal-content}}
 {{/ui-modal}}
