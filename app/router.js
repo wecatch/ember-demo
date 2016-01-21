@@ -25,6 +25,7 @@ Router.map(function() {
     this.route('ui-modal');
     this.route('ui-form');
     this.route('ui-progress');
+    this.route('ui-link');
     this.route('ui-labeled-input');
     this.route('form');
     this.route('file-input');
