@@ -1,0 +1,11 @@
+{{#if hasBlock}}
+    {{yield}}
+{{else}}
+    {{noBlock}}
+{{/if}}
+
+{{#if hasBlockParams}}
+    {{yield this}}
+{{else}}
+    {{noBlockParams}}
+{{/if}}

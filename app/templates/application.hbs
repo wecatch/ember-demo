@@ -8,4 +8,26 @@
         {{#link-to "status" class="item" }}status{{/link-to}}
     </div>
 	{{outlet}}
+
+    <ul>
+        <li>
+            <h6>no block, no block params</h6>
+            {{ui-test}}
+        </li>
+        <li>
+            <h6>block, no block params, block is empty</h6>
+            {{#ui-test}}{{/ui-test}}
+        </li>
+        <li>
+            <h6>block, no block params, block is not empty</h6>
+            {{#ui-test}}block content{{/ui-test}}
+        </li>
+        <li>
+            <h6>block params</h6>
+            {{#ui-test as |c| }}
+                hello {{c.blockParams}} {{!-- yield twice --}}
+            {{/ui-test}}
+        </li>
+    </ul>
+
 </div>
