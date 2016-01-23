@@ -3,31 +3,11 @@
 	<h1 id="title">Ember.js components</h1>
 	<br/>
     <div class="ui  menu">
+        {{#link-to "application" class="item" when-current="application" }}index{{/link-to}}
         {{#link-to "demo" class="item" }}demo{{/link-to}}
         {{#link-to "user" class="item" }}user{{/link-to}}
         {{#link-to "status" class="item" }}status{{/link-to}}
+        {{#link-to "block-params" class="item" }}block params{{/link-to}}
     </div>
 	{{outlet}}
-
-    <ul>
-        <li>
-            <h6>no block, no block params</h6>
-            {{ui-test}}
-        </li>
-        <li>
-            <h6>block, no block params, block is empty</h6>
-            {{#ui-test}}{{/ui-test}}
-        </li>
-        <li>
-            <h6>block, no block params, block is not empty</h6>
-            {{#ui-test}}block content{{/ui-test}}
-        </li>
-        <li>
-            <h6>block params</h6>
-            {{#ui-test as |c| }}
-                hello {{c.blockParams}} {{!-- yield twice --}}
-            {{/ui-test}}
-        </li>
-    </ul>
-
 </div>

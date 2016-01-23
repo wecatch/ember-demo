@@ -42,6 +42,10 @@ Router.map(function() {
     this.route('facebook');
   });
 
+  this.route('block-params', function(){
+
+  });
+
 });
 
 export default Router;

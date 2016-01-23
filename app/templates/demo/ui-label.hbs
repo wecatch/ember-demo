@@ -19,6 +19,36 @@
                 <div class="ui raised segment label" >
                     <div class="ribbon" >i am label</div>
                 </div>
+
+                <div>
+                    {{#ui-label}}label{{/ui-label}}
+                    {{#ui-pointing-label direction="below" }}
+                        below label
+                    {{/ui-pointing-label}}
+
+                    {{#ui-pointing-label direction="left" }}
+                        left label
+                    {{/ui-pointing-label}}
+
+                    {{#ui-pointing-label direction="right" }}
+                        right lbale
+                    {{/ui-pointing-label}}
+                </div>
+
+                <div>
+                    {{#ui-label theme="basic" }}label{{/ui-label}}
+                    {{#ui-label theme="basic red" }}label{{/ui-label}}
+                    {{#ui-label theme="red" }}label{{/ui-label}}
+                    {{#ui-label  }}label{{/ui-label}}
+                    {{#ui-label theme="red image" }}
+                        <img src="https://www.baidu.com/img/bd_logo1.png">
+                        baidu
+                    {{/ui-label}}
+                    {{#ui-label theme="basic" }}label{{/ui-label}}
+                    {{#ui-label theme="basic" }}label{{/ui-label}}
+                    {{#ui-label theme="basic" }}label{{/ui-label}}
+
+                </div>
             </div>
         </div>
     </div>
