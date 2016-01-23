@@ -30,6 +30,7 @@ Router.map(function() {
     this.route('form');
     this.route('file-input');
     this.route('ui-uploader');
+    this.route('ui-input-tags');
   });
   this.route('user', function() {
     this.route('new');
