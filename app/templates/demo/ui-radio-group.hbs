@@ -7,16 +7,16 @@
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-radio-group theme="grouped" value=checkvalue name="co1" }}
+                        {{#ui-radio-group theme="grouped" value=checkvalue name="co1" as |vc| }}
                             <label>choose company</label>
                         <div class="field" >
-                            {{#ui-radio  value="apple" }}apple{{/ui-radio}}
+                            {{#ui-radio  value="apple" action=vc }}apple{{/ui-radio}}
                         </div>
                         <div class="field" >
-                            {{#ui-radio  value="google" }}google{{/ui-radio}}
+                            {{#ui-radio  value="google" action=vc }}google{{/ui-radio}}
                         </div>
                         <div class="field" >
-                            {{#ui-radio  value="dropbox" }}dropbox{{/ui-radio}}
+                            {{#ui-radio  value="dropbox" action=vc }}dropbox{{/ui-radio}}
                         </div>
                         {{/ui-radio-group}}
                     </div>
@@ -29,7 +29,7 @@
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-radio-group theme="grouped" label="choose company" name="co2" options=options value=checkvalue2 }}{{/ui-radio-group}}
+                        {{#ui-radio-group theme="grouped" labelPath="label" label="choose company" name="co2" options=options value=checkvalue2 }}{{/ui-radio-group}}
                     </div>
                     <div class="meta" >
                         {{checkvalue2}}
@@ -48,7 +48,7 @@
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-radio-group name="co3" label="choose company" theme="inline fields" options=options value=checkvalue3 }}
+                        {{#ui-radio-group name="co3" labelPath="label" label="choose company" theme="inline fields" options=options value=checkvalue3 }}
                         {{/ui-radio-group}}
                     </div>
                     <div class="meta" >

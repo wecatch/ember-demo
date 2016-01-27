@@ -5,21 +5,24 @@
     <div class="ui one column grid" >
         <div class="row" >
             <div class="column" >
-                <div class="ui label" >i am label</div>
-                <div class="ui basic label" >i am label</div>
-                <div class="ui blue image label" >
-                    i am label
-                    <div class="detail" >detail</div>
-                </div>
-                <div class="ui pointing label">i am label</div>
-                <div class="ui red left pointing label" > i am label</div>
-                <div class="ui orange right pointing label">i am label</div>
-                <div class="ui blue below pointing label">i am label</div>
-                <div class="ui tag blue below pointing label">i am label</div>
                 <div>
                     {{#ui-label theme="raised segment" }}
                         <div class="ribbon" >i am label</div>
                     {{/ui-label}}
+
+                    {{#ui-pointing-label theme="red" direction="left" }}
+                        below label
+                    {{/ui-pointing-label}}
+
+                    {{#ui-pointing-label theme="tag blue" direction="below" }}
+                        label
+                    {{/ui-pointing-label}}
+
+                    {{#ui-label theme="rblue image" }}
+                         i am label
+                        <div class="detail" >detail</div>
+                    {{/ui-label}}
+
                 </div>
 
                 <div>

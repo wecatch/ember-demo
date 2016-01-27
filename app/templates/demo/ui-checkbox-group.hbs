@@ -7,16 +7,16 @@
             <div class="item" >
                 <div class="content" >
                     <div class="ui form" >
-                        {{#ui-checkbox-group theme="inline fields" value=checkvalue }}
+                        {{#ui-checkbox-group theme="inline fields" value=checkvalue as |valueChange| }}
                             <label>choose company</label>
                             <div class="field" >
-                                {{#ui-checkbox  value="apple" }}apple{{/ui-checkbox}}
+                                {{#ui-checkbox  value="apple" action=(action valueChange) }}apple{{/ui-checkbox}}
                             </div>
                             <div class="field" >
-                                {{#ui-checkbox  value="google" }}google{{/ui-checkbox}}
+                                {{#ui-checkbox  value="google" action=(action valueChange) }}google{{/ui-checkbox}}
                             </div>
                             <div class="field" >
-                                {{#ui-checkbox  value="dropbox" }}dropbox{{/ui-checkbox}}
+                                {{#ui-checkbox  value="dropbox" action=(action valueChange) }}dropbox{{/ui-checkbox}}
                             </div>
                         {{/ui-checkbox-group}}
                     </div>
