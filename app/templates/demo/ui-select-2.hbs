@@ -1,0 +1,37 @@
+<div class="ui grid" >
+    <div class="column" >
+        <div class="items">
+            <div class="ui form" >
+                <button class="ui button" {{action "showAll"}} >show all</button>
+                <h4>自定义label, 选项固定，值只有一个 {{value}}</h4>
+                {{#ui-select label="品牌选择" options=options value=value as |item|}}
+                    <i class="{{item.value}} icon"></i>
+                    {{item.label}}
+                {{/ui-select}}
+
+                <h4>自定义label, 选项固定，值只有多个 {{valuesShow}} </h4>
+                {{#ui-multi-select label="品牌选择" options=options value=values as |item|}}
+                    <i class="{{item.value}} icon"></i>
+                    {{item.label}}
+                {{/ui-multi-select}}      
+
+
+
+                <h4>自定义label, 选项固定，单值，值是动态 {{valueDynamic}} </h4>
+                {{#ui-select label="品牌选择" options=options value=valueDynamic as |item|}}
+                    <i class="{{item.value}} icon"></i>
+                    {{item.label}}
+                {{/ui-select}}
+                {{#ui-button action="changeValue"}}change{{/ui-button}}
+
+
+                <h4>自定义label, 选项固定，值只有多个，值是动态 {{valuesDynamicShow}} </h4>
+                {{#ui-multi-select label="品牌选择" options=options value=valuesDynamic as |item|}}
+                    <i class="{{item.value}} icon"></i>
+                    {{item.label}}
+                {{/ui-multi-select}}
+                {{#ui-button action="changeValues"}}change{{/ui-button}}
+            </div>
+        </div>
+    </div>
+</div>

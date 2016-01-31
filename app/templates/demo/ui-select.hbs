@@ -4,13 +4,22 @@
     <div class="column" >
 		<div class="items">
 			<div class="ui form" >
-				<h3>同步数据源</h3>
+				<button class="ui button" {{action "showAll"}} >show all</button>
+
+				<h3>选项固定，值只有一个 {{value}}</h3>
 				{{#ui-select label="品牌选择" options=options value=value}}{{/ui-select}}
-				{{value}}
-				<h3>下拉选框</h3>
-				{{#ui-select label="品牌选择" value=value1 placeHolder="选择品牌" options=options}}{{/ui-select}}
-				{{value1}}
+
+				<h3>选项固定，值有多个  {{valuesShow}}</h3>
+				{{#ui-multi-select label="品牌选择" options=options value=values}}{{/ui-multi-select}}
+
+				<h3>选项固定，单值, 值是动态的 {{valueDynamic}}</h3>
+				{{#ui-select label="品牌选择" options=options value=valueDynamic}}{{/ui-select}}
+				{{#ui-button action="changeValue"}}change{{/ui-button}}
+
+				<h3>选项固定，多值, 值是动态的 {{valuesDynamicShow}}</h3>
+				{{#ui-multi-select label="品牌选择" options=options value=valuesDynamic}}{{/ui-multi-select}}
+				{{#ui-button action="changeValues"}}change{{/ui-button}}	
 			</div>
-		</div>
+    	</div>
     </div>
 </div>

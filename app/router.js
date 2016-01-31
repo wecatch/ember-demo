@@ -17,6 +17,7 @@ Router.map(function() {
     this.route('ui-checkbox');
     this.route('ui-checkbox-group');
     this.route('ui-select');
+    this.route('ui-select-2');
     this.route('ui-multi-select');
     this.route('ui-dropdown');
     this.route('ui-radio');
