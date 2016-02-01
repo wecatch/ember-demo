@@ -4,7 +4,7 @@
             <div class="ui form" >
                 <button class="ui button" {{action "showAll"}} >show all</button>
                 <h4>自定义label, 选项固定，值只有一个 {{value}}</h4>
-                {{#ui-select label="品牌选择" options=options value=value as |item|}}
+                {{#ui-select label="品牌选择" options=options search=true value=value as |item|}}
                     <i class="{{item.value}} icon"></i>
                     {{item.label}}
                 {{/ui-select}}

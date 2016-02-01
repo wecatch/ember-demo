@@ -7,10 +7,10 @@
 				<button class="ui button" {{action "showAll"}} >show all</button>
 
 				<h3>选项固定，值只有一个 {{value}}</h3>
-				{{#ui-select label="品牌选择" placeholder="品牌选择" options=options value=value}}{{/ui-select}}
+				{{#ui-select label="品牌选择" placeholder="品牌选择" search=true options=options value=value}}{{/ui-select}}
 
 				<h3>选项固定，值有多个  {{valuesShow}}</h3>
-				{{#ui-multi-select label="品牌选择" placeholder="品牌选择" options=options value=values}}{{/ui-multi-select}}
+				{{#ui-multi-select label="品牌选择" search=true placeholder="品牌选择" options=options value=values}}{{/ui-multi-select}}
 
 				<h3>选项固定，单值, 值是动态的 {{valueDynamic}}</h3>
 				{{#ui-select label="品牌选择" placeholder="品牌选择" options=options value=valueDynamic}}{{/ui-select}}
