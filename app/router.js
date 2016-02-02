@@ -10,7 +10,7 @@ Router.map(function() {
     path: '/'
   });
   this.route('demo', function() {
-    this.route('ui-alert');
+    this.route('ui-message');
     this.route('ui-input');
     this.route('ui-button');
     this.route('ui-panel');

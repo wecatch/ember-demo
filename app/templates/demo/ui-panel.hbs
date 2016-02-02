@@ -1,36 +1,14 @@
 {{outlet}}
 
 <div class="ui container">
-	<div class="item">
-		<h4>普通面板</h4>
-		{{#ui-panel}}
-			<h4>ES6 </h4>
-			<p>
-				ES6 In Depth is a series on new features being added to the JavaScript programming language in the 6th Edition of the ECMAScript standard, ES6 for short.
-			</p>
-			<p>
-				Arrows have been part of JavaScript from the very beginning. The first JavaScript tutorials advised wrapping inline scripts in HTML comments. This would prevent browsers that didn’t support JS from erroneously displaying your JS code as text. You would write something like this:
-			</p>
-			<h4>
-				document.bgColor = "brown";  // red
-			</h4>
-		{{/ui-panel}}
-	</div>
-	<br/>
-	<div class="item">
-		<h4>带标题面板</h4>
-		{{#ui-panel topbar=true title="ES6"}}
-			<h4>ES6 </h4>
-			<p>
-				ES6 In Depth is a series on new features being added to the JavaScript programming language in the 6th Edition of the ECMAScript standard, ES6 for short.
-			</p>
-			<p>
-				Arrows have been part of JavaScript from the very beginning. The first JavaScript tutorials advised wrapping inline scripts in HTML comments. This would prevent browsers that didn’t support JS from erroneously displaying your JS code as text. You would write something like this:
-			</p>
-			<h4>
-				document.bgColor = "brown";  // red
-			</h4>
-		{{/ui-panel}}
-	</div>
-	<br/>
+	<h4>普通面板</h4>
+	{{#ui-tab-menu tabs='first,second' }}
+		
+	{{/ui-tab-menu}}
+	{{#ui-tab-segment tab='first' active=true}}
+		first
+	{{/ui-tab-segment}}
+	{{#ui-tab-segment tab='second'}}
+		second
+	{{/ui-tab-segment}}
 </div>
